@@ -25,5 +25,10 @@ class UsersController < ApplicationController
 
             # render json: User.update(params[:id], params.require(:user).permit(:name, :email))
             render json: @user
-        end
+      end
+
+      def destroy 
+            User.find(params[:id]).destroy
+            redirect_to users_url
+      end
 end
