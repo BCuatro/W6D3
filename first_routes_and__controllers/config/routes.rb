@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :create, :destroy, :show, :update]
     resources :artworks, only: [:create, :destroy, :show, :update]
     resources :artwork_shares, only: [:index, :create, :destroy, :show, :update]
+    resources :comments, only: [:index, :create, :destroy]
     get 'users/:user_id/artworks', to: 'artworks#index'
 end

@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
       def index
             #render plain: "I'm in the index section, help me please!?!?"
-            render json: User.all
+            if params[:query]
+                  render json: User.where('username LIKE (?)', '%' + params[:query] + '%')
+            else 
+                  render json: User.all
+            end
       end
 
       def create 
@@ -28,12 +32,11 @@ class UsersController < ApplicationController
       end
 
       def destroy 
-            User.find(params[:id]).destroy
-            redirect_to users_url
+            render json: User.find(params[:id]).destroy
       end
 
       private
       def user_params
-            params.require(:user).permit(:name, :email)
+            params.require(:user).permit(:username)
       end
 end

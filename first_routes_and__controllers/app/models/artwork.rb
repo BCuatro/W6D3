@@ -9,6 +9,12 @@ class Artwork < ApplicationRecord
             primary_key: :id, 
             foreign_key: :artwork_id
 
+      has_many :comments,
+            class_name: 'Comment',
+            primary_key: :id, 
+            foreign_key: :artwork_id, 
+            dependent: :destroy
+      
       has_many :shared_with, through: :shares, source: :viewer
 
       validates :title, presence: true, uniqueness: { scope: :artist_id }

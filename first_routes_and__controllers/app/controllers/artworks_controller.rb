@@ -37,8 +37,8 @@ class ArtworksController < ApplicationController
       end
 
       def destroy 
-            Artwork.find(params[:id]).destroy
-            redirect_to artwork_url
+            render json: Artwork.find(params[:id]).destroy
+            #redirect_to artwork_url
       end
 
       private
