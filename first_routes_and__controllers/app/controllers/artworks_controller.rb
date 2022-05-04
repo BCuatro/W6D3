@@ -1,7 +1,16 @@
 class ArtworksController < ApplicationController
       def index
             #render plain: "I'm in the index section, help me please!?!?"
-            render json: Artwork.all
+            # render json: Artwork.all (old way)
+            
+            u = User.find(params[:user_id])
+            render json: [
+                  [
+                        "Artworks made by #{u.username}", u.artworks
+                  ], [
+                        "Artworks shared with #{u.username}", u.shared_artworks
+                  ]
+            ]
       end
 
       def create 
