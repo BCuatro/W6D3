@@ -1,0 +1,30 @@
+<h1><%=@user.username%>'s profile page</h1>
+<ul>
+      <li>Birthyear: <%=@user.birthyear%></li>
+      <li>Favorite Color: <%=@user.favorite_color%></li>
+      <li>About Me: <%=@user.description%></li>
+</ul>
+<br>
+<form action="<%=@user.id%>/edit" method='get'>
+      <%# <input type="hidden" name="_method" value="EDIT"> %>
+      <p><input type="submit" value="Edit User Info"></p>
+</form>
+<br>
+
+<h2>Artwork Made by <%=@user.username%> | user_id: <%=@user.id%></h2>
+<ul>
+      <% @user.artworks.each do |artwork| %>
+            <li><img src=<%=artwork.image_url%> width='200' height='200'></li>
+      <%end%>
+</ul>
+
+<form action="/artworks/new" method='get'>
+      <input type="submit" value="Submit a Piece of Artwork">
+</form>
+
+<h2>Artwork Shared with <%=@user.username%></h2>
+<ul>
+      <% @user.shared_artworks.each do |artwork| %>
+            <li><img src=<%=artwork.image_url%> width='200' height='200'></li>
+      <%end%>
+</ul>

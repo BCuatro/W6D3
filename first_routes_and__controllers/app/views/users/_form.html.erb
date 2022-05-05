@@ -1,0 +1,40 @@
+<%# Things to change  form action, %>
+
+<%# Action: url we want to send form data to %>
+<%# method: http method that we want to use %>
+
+<% if action == :edit %>
+      <% @action_url = user_url(@user)%>
+<%else%>
+      <% @action_url = users_url %>
+<%end%>
+
+<form action="<%=@action_url%>" method='post'>
+      <%if action == :edit%>
+            <input type="hidden" name="_method" value="PATCH">
+      <%end%>
+
+      <label for="username">New Username</label>
+      <input id="username" type="text" name="user[username]" value="<%=@user.username%>">
+      
+      <br>
+      <label for="birthyear">Birthyear</label>
+      <input id="birthyear" type="text" name="user[birthyear]" value=<%=@user.birthyear%>>
+
+      <br>
+      <label for="category">Category</label>
+            <select id="category" name="user[favorite_color]">
+                  <option disabled <%=@user.favorite_color ? "selected" : "" %>>-- Please Select --</option>
+                  <option value="Blue" <%= @user.favorite_color == "Blue" ? "selected" : ""%>>Blue</option>
+                  <option value="Red" <%= @user.favorite_color == "Red" ? "selected" : ""%>>Red</option>
+                  <option value="Yellow" <%= @user.favorite_color == "Yellow" ? "selected" : ""%>>Yellow</option>
+                  <option value="Green" <%= @user.favorite_color == "Green" ? "selected" : ""%>>Green</option>
+            </select>
+      <br>
+
+      <label for="description">Description</label>
+      <textarea name="user[description]"><%=@user.description%>
+      </textarea>
+
+      <input type="submit" value="<%=(action==:edit) ? 'update user' : 'new user' %>">
+</form>

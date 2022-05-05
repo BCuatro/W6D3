@@ -1,0 +1,17 @@
+
+<h1>Artworks Associated with <%=@user.username%></hi>
+
+<h2>Artwork Made by <%=@user.username%></h2>
+<ul>
+      <% @artwork_made_by_user.each do |artwork| %>
+            <li><img src=<%=artwork.image_url%> width='200' height='200'></li>
+      <%end%>
+</ul>
+
+
+<h2>Artwork Shared with <%=@user.username%></h2>
+<ul>
+      <% @artwork_shared_with_user.each do |artwork| %>
+            <li><img src=<%=artwork.image_url%> width='200' height='200'></li>
+      <%end%>
+</ul>

@@ -2,25 +2,36 @@ class UsersController < ApplicationController
       def index
             #render plain: "I'm in the index section, help me please!?!?"
             if params[:query]
-                  render json: User.where('username LIKE (?)', '%' + params[:query] + '%')
+                  @users = User.where('username LIKE (?)', '%' + params[:query] + '%')
+                  render :index
             else 
-                  render json: User.all
+                  @users = User.all
+                  render :index
             end
       end
 
       def create 
             #render json: params 
-            user = User.new(user_params)
-            if user.save!
-                  render json: user
+            #render json: 'creating user'
+            @user = User.new(user_params)
+            if @user.save!
+                  redirect_to user_url(@user)
+                  #render json: @user
             else 
-                  render json: user.errors.full_messages, status: :unprocessable_entity
+                  render :new
+                  #render json: @user.errors.full_messages, status: :unprocessable_entity
             end
       end
 
       def show 
             @user = User.find(params[:id])
-            render json: @user
+            render :show
+            #json: @user
+      end
+
+      def edit
+            @user = User.find(params[:id])
+            render :edit
       end
 
       def update
@@ -28,11 +39,16 @@ class UsersController < ApplicationController
             @user.update!(user_params)
 
             # render json: User.update(params[:id], params.require(:user).permit(:name, :email))
-            render json: @user
+            redirect_to user_url(@user)
       end
 
       def destroy 
             render json: User.find(params[:id]).destroy
+      end
+
+      def new 
+            @user = User.new
+            render :new
       end
 
       def liked_artworks
@@ -71,6 +87,6 @@ class UsersController < ApplicationController
 
       private
       def user_params
-            params.require(:user).permit(:username)
+            params.require(:user).permit(:username, :favorite_color, :description, :birthyear)
       end
 end
