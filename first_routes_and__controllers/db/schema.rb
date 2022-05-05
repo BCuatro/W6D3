@@ -56,15 +56,6 @@ ActiveRecord::Schema.define(version: 2022_05_05_152601) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "artwork_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artwork_id"], name: "index_favorites_on_artwork_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "liker_id", null: false
     t.integer "likeable_id", null: false

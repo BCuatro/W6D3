@@ -3,7 +3,7 @@ class ArtworksController < ApplicationController
             #render plain: "I'm in the index section, help me please!?!?"
             # render json: Artwork.all (old way)
             
-            u = User.find(params[:user_id])
+            u = User.find(params[:id])
             render json: [
                   [
                         "Artworks made by #{u.username}", u.artworks
@@ -39,6 +39,17 @@ class ArtworksController < ApplicationController
       def destroy 
             render json: Artwork.find(params[:id]).destroy
             #redirect_to artwork_url
+      end
+
+      def favorite
+            a = Artwork.find(params[:art_id])
+            if params[:id] == a.artist_id
+                  new_value = a.favorite_of_artist ? false : true 
+                  a.update!(favorite_of_artist: new_value)
+                  render json: a
+            else 
+                  render json: a
+            end
       end
 
       private

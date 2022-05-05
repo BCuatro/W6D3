@@ -48,6 +48,27 @@ class UsersController < ApplicationController
             end
       end
 
+      def favorite
+            a = Artwork.find(params[:art_id])
+            if params[:id].to_i == a.artist_id
+                  new_value = a.favorite_of_artist ? false : true 
+                  a.update!(favorite_of_artist: new_value)
+                  render json: a
+            else 
+                  render json: 'This is not your art you scumbag butthole!'
+            end
+      end
+
+      def favorite_share
+            a = ArtworkShare.where('viewer_id = (?)', params[:id]).where('artwork_id = (?)', params[:art_id]).first
+            if a
+                  a.update!(favorite_of_sharer: a.favorite_of_sharer ? false : true)
+                  render json: a
+            else
+                  render json: 'No one shared this art with you, smelly cretin'
+            end
+      end
+
       private
       def user_params
             params.require(:user).permit(:username)

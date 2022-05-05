@@ -4,12 +4,15 @@ Rails.application.routes.draw do
     resources :artworks, only: [:create, :destroy, :show, :update]
     resources :artwork_shares, only: [:index, :create, :destroy, :show, :update]
     resources :comments, only: [:index, :create, :destroy]
-    get 'users/:user_id/artworks', to: 'artworks#index'
+   # get 'users/:user_id/artworks', to: 'artworks#index'
     
     resources :users do 
       member do
-        get 'liked_artworks'
-        post 'like_artwork'
+        get 'artworks', to: 'artworks#index'
+        patch 'favorite_artwork/:art_id', to: 'users#favorite'
+        patch 'favorite_share/:art_id', to: 'users#favorite_share'
+        # get 'liked_artworks'
+        # post 'like_artwork'
       end
     end
 end
