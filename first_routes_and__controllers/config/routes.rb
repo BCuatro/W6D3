@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get 'users/:user_id/artworks', to: 'artworks#index'
     
     resources :users do 
-        get 'liked_artworks', :on => :member
-        # post 'like_artwork', :on => :member
+      member do
+        get 'liked_artworks'
+        post 'like_artwork'
+      end
     end
 end
