@@ -15,6 +15,8 @@ class Artwork < ApplicationRecord
             foreign_key: :artwork_id, 
             dependent: :destroy
       
+      has_many :likes, as: :likeable
+      
       has_many :shared_with, through: :shares, source: :viewer
 
       validates :title, presence: true, uniqueness: { scope: :artist_id }
