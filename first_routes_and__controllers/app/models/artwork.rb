@@ -14,10 +14,15 @@ class Artwork < ApplicationRecord
             primary_key: :id, 
             foreign_key: :artwork_id, 
             dependent: :destroy
+
       
       has_many :likes, as: :likeable
       
       has_many :shared_with, through: :shares, source: :viewer
+
+      has_many :likers,
+            through: :likes,
+            source: :liker
 
       validates :title, presence: true, uniqueness: { scope: :artist_id }
       validates :artist_id, presence: true, uniqueness: { scope: :title }

@@ -8,6 +8,13 @@ class Comment < ApplicationRecord
             class_name: 'User',
             primary_key: :id, 
             foreign_key: :user_id
+      
+      has_many :likes, as: :likeable
+
+      has_many :likers,
+            through: :likes,
+            source: :liker
+            
 
       validates :artwork_id, presence: true
       validates :user_id, presence: true
