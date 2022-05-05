@@ -106,3 +106,29 @@ comments_arr.each do |comment|
             end
       end
 end
+
+Collection.destroy_all
+collection1 = Collection.create!(user_id: u1.id)
+collection2 = Collection.create!(user_id: u1.id)
+collection3 = Collection.create!(user_id: u2.id)
+collection4 = Collection.create!(user_id: u3.id)
+collection5 = Collection.create!(user_id: u4.id)
+
+
+CollectionItem.destroy_all
+c1i1 = CollectionItem.create!(collection_id: collection1.id, artwork_id: a1.id)
+c1i2 = CollectionItem.create!(collection_id: collection1.id, artwork_id: a2.id)
+c1i3 = CollectionItem.create!(collection_id: collection1.id, artwork_id: a3.id)
+c2i1 = CollectionItem.create!(collection_id: collection2.id, artwork_id: a4.id)
+c2i2 = CollectionItem.create!(collection_id: collection2.id, artwork_id: a5.id)
+c2i3 = CollectionItem.create!(collection_id: collection2.id, artwork_id: a6.id)
+c3i1 = CollectionItem.create!(collection_id: collection3.id, artwork_id: a1.id)
+c3i2 = CollectionItem.create!(collection_id: collection3.id, artwork_id: a2.id)
+c3i3 = CollectionItem.create!(collection_id: collection3.id, artwork_id: a3.id)
+c4i1 = CollectionItem.create!(collection_id: collection4.id, artwork_id: a4.id)
+c4i2 = CollectionItem.create!(collection_id: collection4.id, artwork_id: a5.id)
+c4i3 = CollectionItem.create!(collection_id: collection4.id, artwork_id: a6.id)
+c5i1 = CollectionItem.create!(collection_id: collection5.id, artwork_id: a1.id)
+c5i2 = CollectionItem.create!(collection_id: collection5.id, artwork_id: a2.id)
+c5i3 = CollectionItem.create!(collection_id: collection5.id, artwork_id: a3.id)
+

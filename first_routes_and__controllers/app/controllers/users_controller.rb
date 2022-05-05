@@ -35,6 +35,19 @@ class UsersController < ApplicationController
             render json: User.find(params[:id]).destroy
       end
 
+      def liked_artworks
+            render json: User.find(params[:id]).liked_artworks
+      end
+
+      def like_artwork
+            l = Like.new(likeable_type: 'Artwork', likeable_id: params[:artwork_id], liker_id: params[:id])
+            if l.save!
+                  render json: l
+            else
+                  render json: l.errors.full_messages, status: :unprocessable_entity
+            end
+      end
+
       private
       def user_params
             params.require(:user).permit(:username)

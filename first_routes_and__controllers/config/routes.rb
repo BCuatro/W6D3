@@ -5,4 +5,9 @@ Rails.application.routes.draw do
     resources :artwork_shares, only: [:index, :create, :destroy, :show, :update]
     resources :comments, only: [:index, :create, :destroy]
     get 'users/:user_id/artworks', to: 'artworks#index'
+    
+    resources :users do 
+        get 'liked_artworks', :on => :member
+        # post 'like_artwork', :on => :member
+    end
 end

@@ -15,8 +15,17 @@ class Artwork < ApplicationRecord
             foreign_key: :artwork_id, 
             dependent: :destroy
 
+      has_many :part_of_collections,
+            class_name: 'CollectionItem',
+            primary_key: :id, 
+            foreign_key: :artwork_id, 
+            dependent: :destroy
       
-      has_many :likes, as: :likeable
+      has_many :belongs_to_collections,
+            through: :part_of_collections,
+                  source: :collection
+      
+      has_many :likes, as: :likeable, dependent: :destroy
       
       has_many :shared_with, through: :shares, source: :viewer
 

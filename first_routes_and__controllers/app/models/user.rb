@@ -11,6 +11,12 @@ class User < ApplicationRecord
             foreign_key: :viewer_id,
             dependent: :destroy
       
+      has_many :collections,
+            class_name: 'Collection',
+            primary_key: :id, 
+            foreign_key: :user_id, 
+            dependent: :destroy
+      
       has_many :comments,
             class_name: 'Comment',
             primary_key: :id, 
@@ -20,7 +26,8 @@ class User < ApplicationRecord
       has_many :likes,
             class_name: 'Like',
             primary_key: :id,
-            foreign_key: :liker_id
+            foreign_key: :liker_id,
+            dependent: :destroy
       
       has_many :liked_artworks,
             through: :likes,
