@@ -35595,3 +35595,161 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/users" for ::1 at 2022-05-05 16:13:22 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/gabrielgroenendaal/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.7.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"ayce"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%ayce%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 130ms (Views: 107.3ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/users/ayce" for ::1 at 2022-05-05 16:13:56 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"ayce"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+Completed 404 Not Found in 11ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ayce):
+  
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/?query=ayce" for ::1 at 2022-05-05 16:14:20 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"ayce"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%ayce%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/?query=gabe" for ::1 at 2022-05-05 16:14:37 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"gabe"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%gabe%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/?query=kinka" for ::1 at 2022-05-05 16:14:41 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"kinka"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%kinka%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/query=kinka" for ::1 at 2022-05-05 16:15:14 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"query=kinka"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=query=kinka):
+  
+app/controllers/users_controller.rb:27:in `show'
+Started GET "/users/?query=kinka" for ::1 at 2022-05-05 16:15:21 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"kinka"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%kinka%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/?query=kinka" for ::1 at 2022-05-05 16:16:30 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"query"=>"kinka"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%kinka%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/new" for ::1 at 2022-05-05 16:16:46 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (1.1ms)
+  Rendered users/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-05-05 16:16:57 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"VeraSmeara", "birthyear"=>"1212", "favorite_color"=>"Blue", "description"=>"      dssfadsfas"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "VeraSmeara"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "description", "favorite_color", "birthyear") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "VeraSmeara"], ["created_at", "2022-05-05 20:16:57.749435"], ["updated_at", "2022-05-05 20:16:57.749435"], ["description", "      dssfadsfas"], ["favorite_color", "Blue"], ["birthyear", 1212]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17
+Redirected to http://localhost:3000/users/131
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users/131" for ::1 at 2022-05-05 16:16:57 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"131"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 131], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mArtwork Load (0.5ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" WHERE "artworks"."artist_id" = $1[0m  [["artist_id", 131]]
+  ↳ app/views/users/show.html.erb:16
+  [1m[36mArtwork Load (1.1ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" INNER JOIN "artwork_shares" ON "artworks"."id" = "artwork_shares"."artwork_id" WHERE "artwork_shares"."viewer_id" = $1[0m  [["viewer_id", 131]]
+  ↳ app/views/users/show.html.erb:27
+  Rendered users/show.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 30ms (Views: 25.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/artworks/new" for ::1 at 2022-05-05 16:17:15 -0400
+Processing by ArtworksController#new as HTML
+  Rendering artworks/new.html.erb within layouts/application
+  Rendered artworks/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/?query=gabe" for ::1 at 2022-05-05 16:44:28 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"gabe"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%gabe%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 44ms (Views: 31.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/users/?query=ayce" for ::1 at 2022-05-05 16:44:36 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>"ayce"}
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username LIKE ('%ayce%'))[0m
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 32ms (Views: 31.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/new" for ::1 at 2022-05-06 09:04:34 -0400
+Processing by UsersController#new as */*
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.8ms)
+  Rendered users/new.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 46ms (Views: 45.5ms | ActiveRecord: 0.0ms)
+
+
